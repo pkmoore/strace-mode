@@ -2,7 +2,7 @@
 ;; COPYRIGHT © 2016, by Preston Moore
 
 ;; Author: Preston Moore (prestonkmoore@gmail.com)
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Keywords: languages
 
 ;; This file is not part of GNU Emacs.
@@ -21,6 +21,7 @@
 
 ;; create the list for font-lock.
 ;; each category of keyword is given a particular face
+(defvar strace-font-lock-keywords)
 (setq strace-font-lock-keywords `(
                                   ("^\\([0-9]+\\) " . (1 font-lock-warning-face))
                                   ("^[0-9]+ \\([a-zA-Z0-9_]*\\)(" . (1 font-lock-constant-face))
@@ -39,8 +40,11 @@
   "strace mode"
   "Major mode for strace output"
 
-  ;; code for syntax highlighting
-  (setq font-lock-defaults '((strace-font-lock-keywords))))
+  (setq font-lock-defaults '((strace-font-lock-keywords)))
+)
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.strace\\'" . strace-mode))
 
 ;; add the mode to the `features' list
 (provide 'strace-mode)
