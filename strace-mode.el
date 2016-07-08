@@ -49,4 +49,4 @@
 ;; coding: utf-8
 ;; End:
 
-;;; strace.el ends here
+;;; strace-mode.el ends here
