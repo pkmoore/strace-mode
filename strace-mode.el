@@ -1,4 +1,4 @@
-;;; strace-mode.el --- strace output syntax hilighting
+;;; strace-mode.el --- strace output syntax highlighting
 ;; COPYRIGHT © 2016, by Preston Moore
 
 ;; Author: Preston Moore (prestonkmoore@gmail.com)
@@ -12,9 +12,9 @@
 
 ;;; Commentary:
 
-;; strace syntax hilighting
+;; strace syntax highlighting
 
-;; strace syntax hilighting
+;; strace syntax highlighting
 
 
 ;;; Code:
