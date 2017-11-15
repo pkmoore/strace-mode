@@ -55,7 +55,7 @@
      . font-lock-type-face)))
 
 ;;;###autoload
-(define-derived-mode strace-mode fundamental-mode "strace"
+(define-derived-mode strace-mode special-mode "strace"
   "Major mode for strace output."
   (setq font-lock-defaults '((strace-font-lock-keywords))))
 
