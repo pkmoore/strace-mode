@@ -30,28 +30,34 @@
 
 ;; create the list for font-lock.
 ;; each category of keyword is given a particular face
-(defvar strace-font-lock-keywords)
-(setq strace-font-lock-keywords `(
-                                  ("^\\([0-9]+\\) " . (1 font-lock-warning-face))
-                                  ("^[0-9]+ \\([a-zA-Z0-9_]*\\)(" . (1 font-lock-constant-face))
-                                  (" = 0x[[:xdigit:]]+ \\([[:upper:]]+\\).*$" . (1 font-lock-warning-face))
-                                  (" = -?[[:digit:]?]+ \\([[:upper:]]+\\).*$" . (1 font-lock-warning-face))
-                                  (" = \\(0x[[:xdigit:]]+\\).*$" . (1 font-lock-keyword-face))
-                                  (" = \\(-?[[:digit:]?]+\\).*$" . (1 font-lock-keyword-face))
-                                  ("[ =\(\[\{]\\([[:upper:]_|]+\\)[] |\,\(\)\}]" . (1 font-lock-constant-face))
-                                  (" \\((.*)\\)$" . (1 font-lock-comment-face))
-                                  ("\\(/\\*.*\\*/\\)" . (1 font-lock-comment-face))
-                                  ("0x[[:xdigit:]]+" . font-lock-type-face)
-                                  ("-?[[:digit:]]+" . font-lock-type-face)
-                                  )
-)
+(defvar strace-font-lock-keywords
+  `(("^\\([0-9]+\\) "
+     . (1 font-lock-warning-face))
+    ("^[0-9]+ \\([a-zA-Z0-9_]*\\)("
+     . (1 font-lock-constant-face))
+    (" = 0x[[:xdigit:]]+ \\([[:upper:]]+\\).*$"
+     . (1 font-lock-warning-face))
+    (" = -?[[:digit:]?]+ \\([[:upper:]]+\\).*$"
+     . (1 font-lock-warning-face))
+    (" = \\(0x[[:xdigit:]]+\\).*$"
+     . (1 font-lock-keyword-face))
+    (" = \\(-?[[:digit:]?]+\\).*$"
+     . (1 font-lock-keyword-face))
+    ("[ =\(\[\{]\\([[:upper:]_|]+\\)[] |\,\(\)\}]"
+     . (1 font-lock-constant-face))
+    (" \\((.*)\\)$"
+     . (1 font-lock-comment-face))
+    ("\\(/\\*.*\\*/\\)"
+     . (1 font-lock-comment-face))
+    ("0x[[:xdigit:]]+"
+     . font-lock-type-face)
+    ("-?[[:digit:]]+"
+     . font-lock-type-face)))
 
 ;;;###autoload
-(define-derived-mode strace-mode fundamental-mode
-  "strace"
+(define-derived-mode strace-mode special-mode "strace"
   "Major mode for strace output."
-  (setq font-lock-defaults '((strace-font-lock-keywords)))
-)
+  (setq font-lock-defaults '((strace-font-lock-keywords))))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.strace\\'" . strace-mode))
